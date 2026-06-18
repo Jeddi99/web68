@@ -14,9 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import asgiref.current_thread_executor
+from asgiref import current_thread_executor
+from asgiref import current_thread_executor
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+from django.shortcuts import render 
 # from myapp import views
 
 def info(request):
@@ -27,7 +31,12 @@ def info(request):
         
     return HttpResponse(res_text)
 
+def home (request):
+    return render(request,'index.html')
+    
 urlpatterns = [
     path('info/',info),
+    path('',home),
+    # pyrefly: ignore [parse-error]
     path('admin/', admin.site.urls),
 ]

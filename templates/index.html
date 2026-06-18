@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web68 Studio - Premium Digital Solutions</title>
+    <meta name="description" content="สร้างสรรค์เว็บไซต์ แอปพลิเคชัน และโซลูชันดิจิทัลระดับพรีเมียมด้วยเทคโนโลยีที่ล้ำสมัย">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS resets & variables */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-gradient: radial-gradient(circle at 50% 50%, #111827 0%, #06080f 100%);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --secondary: #06b6d4;
+            --secondary-glow: rgba(6, 182, 212, 0.4);
+            --accent: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: rgba(139, 92, 246, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-color);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar */
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.8);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: inline-block;
+            box-shadow: 0 0 10px var(--secondary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-contact {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 99px;
+            color: var(--text-main) !important;
+            font-weight: 600 !important;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-contact:hover {
+            background: var(--primary) !important;
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 15px var(--primary-glow) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: #c084fc;
+            padding: 0.4rem 1.2rem;
+            border-radius: 99px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff 30%, #e2e8f0 60%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: var(--text-main);
+            border: none;
+            padding: 1rem 2.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, #9333ea 0%, #6d28d9 100%);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 1rem 2.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Glowing background blobs */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .blob-1 {
+            top: 10%;
+            left: 5%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
+        }
+
+        .blob-2 {
+            top: 30%;
+            right: 5%;
+            background: radial-gradient(circle, var(--secondary-glow) 0%, transparent 60%);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-hover-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 
+                        0 0 20px rgba(139, 92, 246, 0.1);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Dev terminal integration section */
+        .terminal-section {
+            padding: 5rem 0;
+        }
+
+        .terminal-wrapper {
+            background: #07090e;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .terminal-header {
+            background: #111827;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #eab308; }
+        .dot-green { background: #22c55e; }
+
+        .terminal-title {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+            margin-left: 1rem;
+            flex-grow: 1;
+        }
+
+        .terminal-body {
+            padding: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .terminal-prompt {
+            color: #f43f5e;
+            margin-right: 0.75rem;
+            user-select: none;
+        }
+
+        .terminal-command {
+            color: #f8fafc;
+        }
+
+        .terminal-output {
+            color: #10b981;
+            width: 100%;
+            margin-top: 0.25rem;
+            padding-left: 1.5rem;
+            word-break: break-all;
+        }
+
+        .terminal-comment {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Interactive Estimate Widget */
+        .estimate-section {
+            padding: 5rem 0;
+        }
+
+        .calc-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(16px);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .calc-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-header p {
+            color: var(--text-muted);
+        }
+
+        .calc-row {
+            margin-bottom: 2rem;
+        }
+
+        .calc-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .calc-value {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Styled inputs */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 99px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .checkbox-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--card-border);
+            padding: 1.25rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .checkbox-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .checkbox-card.active {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.05);
+        }
+
+        .checkbox-card input {
+            display: none;
+        }
+
+        .checkbox-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .checkbox-card.active .checkbox-custom {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+
+        .checkbox-custom::after {
+            content: '✓';
+            color: #fff;
+            font-size: 0.8rem;
+            display: none;
+        }
+
+        .checkbox-card.active .checkbox-custom::after {
+            display: block;
+        }
+
+        .calc-total {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px dashed rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .calc-total-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-total-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .calc-total-price span.currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: none;
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0 8rem 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 1rem;
+            border-radius: 10px;
+            color: var(--text-main);
+            outline: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(139, 92, 246, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive designs */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            .hero p.hero-desc {
+                font-size: 1.1rem;
+            }
+            .nav-links {
+                display: none; /* simple hidden links for mobile to keep clean */
+            }
+            .hero-btns {
+                flex-direction: column;
+                padding: 0 2rem;
+            }
+            .calc-container {
+                padding: 1.5rem;
+            }
+            .calc-total-price {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo" id="nav-logo">
+                Web68 Studio <span class="logo-dot"></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services" id="link-services">บริการของเรา</a></li>
+                <li><a href="#estimator" id="link-estimator">ประเมินราคา</a></li>
+                <li><a href="#system" id="link-system">ระบบทดสอบ</a></li>
+                <li><a href="#contact" class="btn-contact" id="link-contact">ติดต่อเรา</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                Next-Gen Web Technology 2026
+            </div>
+            <h1 id="hero-title">สร้างสรรค์ระบบดิจิทัล<br><span style="background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ระดับพรีเมียม</span> เพื่ออนาคต</h1>
+            <p class="hero-desc">เราให้บริการออกแบบและพัฒนาเว็บไซต์ แอปพลิเคชัน และแพลตฟอร์มด้วยสถาปัตยกรรมที่ทันสมัย รวดเร็ว ปลอดภัย และตอบโจทย์ธุรกิจยุคใหม่ของคุณได้อย่างไร้รอยต่อ</p>
+            
+            <div class="hero-btns">
+                <button class="btn-primary" id="btn-hero-start" onclick="document.getElementById('estimator').scrollIntoView({behavior: 'smooth'})">
+                    เริ่มต้นประเมินโครงการ
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+                <button class="btn-secondary" id="btn-hero-learn" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">เรียนรู้เพิ่มเติม</button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="features" id="services">
+            <div class="section-header">
+                <h2>ความเชี่ยวชาญระดับมืออาชีพ</h2>
+                <p>โซลูชันแบบครบวงจรที่ผ่านการคิดค้นและพัฒนาเพื่อความเป็นเลิศทางธุรกิจ</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Card 1 -->
+                <div class="card" id="card-service-1">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <h3>High-Performance Web</h3>
+                    <p>พัฒนาเว็บไซต์และเว็บแอปพลิเคชันที่มีความเร็วสูง รองรับการใช้งานจากผู้ใช้นับแสนคนด้วย Django, React และ Next.js สถาปัตยกรรมชั้นเลิศ</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="card" id="card-service-2">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Cybersecurity & Integrity</h3>
+                    <p>ระบบรักษาความปลอดภัยแบบครอบคลุม ป้องกันช่องโหว่ SQL Injection, CSRF, XSS และปกป้องข้อมูลส่วนบุคคลของลูกค้าอย่างเข้มงวดที่สุด</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="card" id="card-service-3">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Premium UI/UX Design</h3>
+                    <p>ออกแบบส่วนติดต่อผู้ใช้งานที่หรูหรา ใช้งานง่าย (Intuitive Layouts) พร้อมเอฟเฟกต์การเลื่อนและตอบสนองแบบ Micro-interactions ที่เป็นธรรมชาติ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Estimate Widget Section -->
+        <section class="estimate-section" id="estimator">
+            <div class="calc-container">
+                <div class="calc-header">
+                    <h3>เครื่องคำนวณงบประมาณเบื้องต้น</h3>
+                    <p>เลือกขนาดโครงการและฟีเจอร์ที่ต้องการเพื่อคำนวณราคาประเมินแบบเรียลไทม์</p>
+                </div>
+
+                <div class="calc-row">
+                    <div class="calc-label">
+                        <span>จำนวนหน้าเพจ / หน้าจอ</span>
+                        <span class="calc-value" id="pages-display">5 หน้า</span>
+                    </div>
+                    <input type="range" id="pages-range" min="1" max="30" value="5">
+                </div>
+
+                <div class="calc-row">
+                    <div class="calc-label">
+                        <span>ระยะเวลาในการพัฒนา</span>
+                        <span class="calc-value" id="duration-display">4 สัปดาห์</span>
+                    </div>
+                    <input type="range" id="duration-range" min="2" max="16" value="4">
+                </div>
+
+                <div class="calc-row">
+                    <div class="calc-label">ฟีเจอร์ระดับสูงเพิ่มเติม</div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-card" onclick="toggleCheckbox('feat-db')">
+                            <input type="checkbox" id="feat-db" value="8000">
+                            <div class="checkbox-custom"></div>
+                            <div>
+                                <strong style="display:block;font-size:0.95rem;">Database System</strong>
+                                <span style="font-size:0.8rem;color:var(--text-muted);">ระบบฐานข้อมูลและจัดการหลังบ้าน</span>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-card" onclick="toggleCheckbox('feat-auth')">
+                            <input type="checkbox" id="feat-auth" value="5000">
+                            <div class="checkbox-custom"></div>
+                            <div>
+                                <strong style="display:block;font-size:0.95rem;">User Authentication</strong>
+                                <span style="font-size:0.8rem;color:var(--text-muted);">ระบบสมัครสมาชิกและลงชื่อเข้าใช้งาน</span>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-card" onclick="toggleCheckbox('feat-payment')">
+                            <input type="checkbox" id="feat-payment" value="10000">
+                            <div class="checkbox-custom"></div>
+                            <div>
+                                <strong style="display:block;font-size:0.95rem;">Payment Gateway</strong>
+                                <span style="font-size:0.8rem;color:var(--text-muted);">ระบบชำระเงินออนไลน์ (Credit Card/QR)</span>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-card" onclick="toggleCheckbox('feat-seo')">
+                            <input type="checkbox" id="feat-seo" value="3000">
+                            <div class="checkbox-custom"></div>
+                            <div>
+                                <strong style="display:block;font-size:0.95rem;">Premium SEO Boost</strong>
+                                <span style="font-size:0.8rem;color:var(--text-muted);">การตั้งค่า SEO เชิงลึกและการตลาดดิจิทัล</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-total">
+                    <div class="calc-total-label">ราคาประเมินโครงการเบื้องต้น</div>
+                    <div class="calc-total-price">
+                        <span class="currency">฿</span><span id="total-price">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dev terminal integration section -->
+        <section class="terminal-section" id="system">
+            <div class="section-header">
+                <h2>การเชื่อมต่อข้อมูลเซิร์ฟเวอร์ (Django backend)</h2>
+                <p>ข้อมูลจำเพาะของผู้เข้าชมที่ส่งตรงมาจากเครื่องแม่ข่ายด้วยสถาปัตยกรรมแบบไดนามิก</p>
+            </div>
+
+            <div class="terminal-wrapper">
+                <div class="terminal-header">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                    <span class="terminal-title">system_monitor.sh - django-console</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">python manage.py runserver</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-comment"># กำลังดึงข้อมูล Client จาก Django Request Object...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">&gt;&gt;&gt;</span>
+                        <span class="terminal-command">print(request.META['REMOTE_ADDR'])</span>
+                        <div class="terminal-output">
+                            {% if request.META.REMOTE_ADDR %}
+                                {{ request.META.REMOTE_ADDR }}
+                            {% else %}
+                                127.0.0.1 (Local Environment)
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">&gt;&gt;&gt;</span>
+                        <span class="terminal-command">print(request.META['HTTP_USER_AGENT'])</span>
+                        <div class="terminal-output" style="color: #eab308;">
+                            {% if request.META.HTTP_USER_AGENT %}
+                                {{ request.META.HTTP_USER_AGENT }}
+                            {% else %}
+                                Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36 (Mock Agent)
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">&gt;&gt;&gt;</span>
+                        <span class="terminal-command">print("Django Engine Status")</span>
+                        <div class="terminal-output" style="color: #22c55e;">
+                            STATUS: ACTIVE (Listening on port 80)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="section-header">
+                <h2>ส่งข้อความหาเรา</h2>
+                <p>บอกเล่าโครงการที่คุณใฝ่ฝัน แล้วเราจะสร้างมันขึ้นมาด้วยกัน</p>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('ส่งข้อความสำเร็จแล้ว! เจ้าหน้าที่ของเราจะติดต่อกลับภายใน 24 ชม.');">
+                <div class="form-group">
+                    <label for="name">ชื่อผู้ติดต่อ</label>
+                    <input type="text" id="name" placeholder="คุณสมชาย ใจดี" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">อีเมลติดต่อ</label>
+                    <input type="email" id="email" placeholder="example@web68.studio" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">รายละเอียดโครงการเบื้องต้น</label>
+                    <textarea id="message" rows="5" placeholder="อธิบายโครงการที่คุณต้องการพัฒนา..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="btn-submit-contact">ส่งข้อความประเมินโครงการ</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">Web68 Studio</a>
+            <ul class="footer-links">
+                <li><a href="#services">บริการของเรา</a></li>
+                <li><a href="#estimator">ประเมินราคา</a></li>
+                <li><a href="#system">ระบบทดสอบ</a></li>
+                <li><a href="#contact">ติดต่อเรา</a></li>
+            </ul>
+            <p>&copy; 2026 Web68 Studio. Powered by Django. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JS -->
+    <script>
+        // Checkbox card toggle helper
+        function toggleCheckbox(id) {
+            const checkbox = document.getElementById(id);
+            const card = checkbox.parentElement;
+            checkbox.checked = !checkbox.checked;
+            
+            if (checkbox.checked) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+            calculatePrice();
+        }
+
+        // Live calculation logic
+        const pagesRange = document.getElementById('pages-range');
+        const durationRange = document.getElementById('duration-range');
+        const pagesDisplay = document.getElementById('pages-display');
+        const durationDisplay = document.getElementById('duration-display');
+        const totalPriceEl = document.getElementById('total-price');
+
+        function calculatePrice() {
+            const pages = parseInt(pagesRange.value);
+            const duration = parseInt(durationRange.value);
+            
+            pagesDisplay.textContent = pages + ' หน้า';
+            durationDisplay.textContent = duration + ' สัปดาห์';
+
+            // Base price calculation formula
+            // 3,000 THB per page + offset base
+            let basePrice = 5000 + (pages * 2500);
+            
+            // Adjust price based on developer duration (shorter duration = higher rush fee)
+            // standard speed is 6 weeks. <6 weeks incurs rush premium, >6 weeks gives slight efficiency discounts
+            let speedFactor = 1.0;
+            if (duration < 4) {
+                speedFactor = 1.3; // Rush fee
+            } else if (duration < 6) {
+                speedFactor = 1.1;
+            } else if (duration > 10) {
+                speedFactor = 0.9;
+            }
+            
+            let total = basePrice * speedFactor;
+
+            // Features cost add-on
+            const features = ['feat-db', 'feat-auth', 'feat-payment', 'feat-seo'];
+            features.forEach(id => {
+                const cb = document.getElementById(id);
+                if (cb && cb.checked) {
+                    total += parseFloat(cb.value);
+                }
+            });
+
+            // Smooth counter transition
+            const roundedTotal = Math.round(total);
+            animateValue(totalPriceEl, parseInt(totalPriceEl.textContent.replace(/,/g, '')) || 0, roundedTotal, 500);
+        }
+
+        // Animated price digits counter
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const val = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = val.toLocaleString('th-TH');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Set event listeners
+        pagesRange.addEventListener('input', calculatePrice);
+        durationRange.addEventListener('input', calculatePrice);
+
+        // Initial calculation trigger
+        calculatePrice();
+    </script>
+</body>
+</html>
